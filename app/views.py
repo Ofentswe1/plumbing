@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-
+from app import models
 
 class Login(View):
     def get(self, request, *args, **kwargs):
@@ -27,4 +27,5 @@ class Login(View):
 
 class AllBookings(View):
     def get(self, request, *args, **kwargs):
+        model = models.Bookings.objects.all(username=kwarg['username'])
         return HttpResponse('{"Success":"name"}')
